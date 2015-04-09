@@ -80,6 +80,7 @@ module.exports = app;
  `num` int(11) NOT NULL,
  `title` varchar(50) NOT NULL,
  `content` varchar(5000) NOT NULL,
+ `passwd` varchar(12) NOT NULL,
  `regdate` datetime NOT NULL,
  `hit` int(11) NOT NULL DEFAULT '0',
  `reply` int(11) NOT NULL DEFAULT '0',
@@ -89,4 +90,6 @@ module.exports = app;
  KEY `fk_board_member_idx` (`id`),
  CONSTRAINT `fk_board_member` FOREIGN KEY (`id`) REFERENCES `member` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
  ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+
  */

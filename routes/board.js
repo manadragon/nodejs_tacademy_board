@@ -10,4 +10,8 @@ router.get('/', function(req, res, next) {
   res.render('board', { "title" : '게시판' });
 });
 
+router.get('/write', function (req, res, next) {
+  res.render('writeform', { "title" : "글쓰기" });
+});
+
 module.exports = router;
