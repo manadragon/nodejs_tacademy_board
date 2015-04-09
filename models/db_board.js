@@ -72,7 +72,7 @@ exports.list = function (page, callback) {
       // 전체 글이 존재하는 개수
       var max = cnt - ((page-1) * size);
 
-      conn.query("select num, title, content, passwd, regdate, hit, reply, recmd, id " +
+      conn.query("select num, title, content, passwd, DATE_FORMAT(regdate, '%Y-%m-%d %H:%i:%s') regdate, hit, reply, recmd, id " +
                  "from board " +
                  "order by num desc " +
                  "limit ?, ?", [begin, size], function (err, rows) {
@@ -93,11 +93,6 @@ exports.list = function (page, callback) {
         conn.release();
         callback(datas);
       });
-
-
-
-
-
     });
   });
 }

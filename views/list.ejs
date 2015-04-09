@@ -8,5 +8,28 @@
   <body>
     <h1><%= title %></h1>
     <a href="/board/write">쓰기</a>
+    <!-- 번호, 제목, 작성자, 날짜, 조회수-->
+    <table width="600" border="1">
+      <tr>
+        <th width="40">번호</th>
+        <th width="260">제목</th>
+        <th width="100">작성자</th>
+        <th width="160">날짜</th>
+        <th width="40">조회</th>
+      </tr>
+      <%
+        for(var i= 0, len = data.length; i < len, item = data[i]; i++){
+      %>
+      <tr>
+        <td><%=max-i%></td>
+        <td><%=item.title%></td>
+        <td><%=item.id%></td>
+        <td><%=item.regdate%></td>
+        <td><%=item.hit%></td>
+      </tr>
+      <%
+        }
+      %>
+    </table>
   </body>
 </html>

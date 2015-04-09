@@ -1,13 +1,13 @@
-# Tacademy Node.js 게시판 구현(Express, ejs, MySQL)
-================================================
+# Tacademy Node.js 게시판 구현
+===========
 
-**MVC 패턴을 이용한 구현**
+** 사용 기술 **
+  Express, ejs, MySQL
 
+** MVC 패턴을 이용한 구현 **
   M - models 폴더
 
-
-**프로토콜 정의**
-
+** 프로토콜 정의 **
   글쓰기 화면  : get /board/write
   글쓰기 : post /board/write
 
@@ -21,5 +21,4 @@
 
   글 한개 보여주기 : get /board/read
 
-____
 
