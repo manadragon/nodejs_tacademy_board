@@ -8,7 +8,7 @@ var mysql = require('mysql');
 
 // setting
 var pool = mysql.createPool({
-  "connectionLimit" : 3,
+  "connectionLimit" : 300,
   "host" : "127.0.0.1",
   "user" : "root",
   "password" : "ppsung",
@@ -18,15 +18,27 @@ var pool = mysql.createPool({
 exports.write = function (datas, callback) {
   pool.getConnection(function (err, conn) {
     // err : 에러를 가져온다, conn : 결과를 가져온다.
-
     if (err)
       console.error('err', err);
 
-    console.log('conn', conn);
-    conn.release();
 
-    // 요청한 곳에 callback함수를 돌려준다.
-    callback(true);
+    var sql = "insert into board(title, content, passwd, regdate, hit, reply, recmd, id) " +
+              "values (?, ?, ?, now(), 1, 1, 1, 'hong')";
+
+    conn.query(sql, datas, function (err, row) {
+      if (err) console.error('err', err);
+
+      console.log("row", row);
+
+      var success = false;
+
+      if (row.affectedRows == 1){
+        success = true;
+      }
+      conn.release();
+      // 요청한 곳에 callback함수를 돌려준다.
+      callback(success);
+    });
   });
 }
 

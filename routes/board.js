@@ -24,7 +24,7 @@ router.post('/write', function (req, res, next) {
 
   var datas = [title, content, passwd];
 
-  res.json({"result" : "success"});
+  //res.json({"result" : "success"});
 
   db_board.write(datas, function (success) {
 
@@ -34,8 +34,6 @@ router.post('/write', function (req, res, next) {
       res.json({"result" : "success"});  // 모바일 서버일 경우
       //res.redirect('/board/list/1');
     }
-
-
   });
 });
 
