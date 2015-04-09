@@ -8,6 +8,9 @@ var bodyParser = require('body-parser');
 var routes = require('./routes/index');
 var users = require('./routes/users');
 
+
+var board = require('./routes/board');
+
 var app = express();
 
 // view engine setup
@@ -24,6 +27,10 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', routes);
 app.use('/users', users);
+
+
+app.use('/board', board);
+
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
@@ -66,3 +73,20 @@ server.listen(app.get('port'));
 console.log('서버가 ' + app.get('port') + '번 포트에서 실행중입니다.!!!');
 
 module.exports = app;
+
+
+/*
+ CREATE TABLE `board` (
+ `num` int(11) NOT NULL,
+ `title` varchar(50) NOT NULL,
+ `content` varchar(5000) NOT NULL,
+ `regdate` datetime NOT NULL,
+ `hit` int(11) NOT NULL DEFAULT '0',
+ `reply` int(11) NOT NULL DEFAULT '0',
+ `recmd` int(11) NOT NULL DEFAULT '0',
+ `id` varchar(12) NOT NULL,
+ PRIMARY KEY (`num`),
+ KEY `fk_board_member_idx` (`id`),
+ CONSTRAINT `fk_board_member` FOREIGN KEY (`id`) REFERENCES `member` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
+ ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+ */
