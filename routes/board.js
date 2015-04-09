@@ -29,7 +29,7 @@ router.post('/write', function (req, res, next) {
   db_board.write(datas, function (success) {
 
     if (!success)
-      res.json({"result" : "fail"});  // 모바일 서버일 경우
+      //res.json({"result" : "fail"});  // 모바일 서버일 경우
       res.end('<head><meta charset="UTF-8">' +
                '<script>alert("에러가 발생하여 되돌아갑니다.");history.back();</script> </head>');
     else {
