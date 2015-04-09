@@ -14,4 +14,10 @@ router.get('/write', function (req, res, next) {
   res.render('writeform', { "title" : "글쓰기" });
 });
 
+router.post('/write', function (req, res, next) {
+  console.log('req.body', req.body);
+
+  res.json({"result" : "success"});
+});
+
 module.exports = router;
