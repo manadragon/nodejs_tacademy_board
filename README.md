@@ -8,7 +8,7 @@
   글쓰기 화면  : get /board/write
   글쓰기 : post /board/write
 
-  리스트 : get /board/list/:pg
+  리스트 : get /board/list/:page
 
   수정 화면 : get /board/modify
   수정하기 : post /board/modify

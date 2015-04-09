@@ -30,11 +30,28 @@ router.post('/write', function (req, res, next) {
 
     if (!success)
       res.json({"result" : "fail"});  // 모바일 서버일 경우
+      res.end('<head><meta charset="UTF-8">' +
+               '<script>alert("에러가 발생하여 되돌아갑니다.");history.back();</script> </head>');
     else {
-      res.json({"result" : "success"});  // 모바일 서버일 경우
-      //res.redirect('/board/list/1');
+      //res.json({"result" : "success"});  // 모바일 서버일 경우
+      res.redirect('/board/list/1');
     }
   });
 });
+
+router.get('/list', function (req, res, next) {
+  res.redirect('/board/list/1');
+});
+
+router.get('/list/:page', function (req, res, next) {
+  var page = req.params.page;
+  page = parseInt(page, 10);
+
+  console.log(page);
+  db_board.list(page, function (datas) {
+    res.render('list', datas);
+  });
+});
+
 
 module.exports = router;

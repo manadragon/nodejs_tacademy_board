@@ -47,3 +47,20 @@ exports.write = function (datas, callback) {
 
  }
  */
+
+exports.list = function (page, callback) {
+  pool.getConnection(function (err, conn) {
+    if (err) console.error('err', err);
+    var sql = "select * from board";
+
+    conn.query(sql, [], function (err, rows) {
+      console.log("rows", rows);
+      var datas = {
+        "title" : "리스트",
+        "rows" : rows
+      };
+      conn.release();
+      callback(datas);
+    });
+  });
+}
