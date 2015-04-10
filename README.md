@@ -1,9 +1,6 @@
 Tacademy Node.js 게시판 구현
 ================
-***Libraries***
 
-	ejs
-	
 ***Data Stores***
 
 	mysql
