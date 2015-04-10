@@ -10,7 +10,7 @@ Tacademy Node.js 게시판 구현
 
 ***Languages & Frameworks***
 
-	Angular : view
+	ejs : view
 	node - express
 	javascript
 
