@@ -1,24 +1,32 @@
-# Tacademy Node.js 게시판 구현
-===========
+Tacademy Node.js 게시판 구현
+================
+**Libraries**
 
-** 사용 기술 **
-  Express, ejs, MySQL
+	ejs
+	
+**Data Stores**
 
-** MVC 패턴을 이용한 구현 **
-  M - models 폴더
+	mysql
 
-** 프로토콜 정의 **
-  글쓰기 화면  : get /board/write
-  글쓰기 : post /board/write
+**Languages & Frameworks**
 
-  리스트 : get /board/list/:page
+	Angular : view
+	node - express
+	javascript
 
-  수정 화면 : get /board/modify
-  수정하기 : post /board/modify
+**Protocol Definition**
+  writeform  : get /board/write
+  write : post /board/write
 
-  삭제 화면 : get /board/delete
-  삭제하기 : post /board/delete
+  list : get /board/list/:page
 
-  글 한개 보여주기 : get /board/read
+  modifyform : get /board/modify
+  modify : post /board/modify
+
+  delete form : get /board/delete
+  delete : post /board/delete
+
+  show the post : get /board/read
+____
 
 
