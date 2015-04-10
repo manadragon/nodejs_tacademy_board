@@ -15,18 +15,19 @@ Tacademy Node.js 게시판 구현
 	javascript
 
 **Protocol Definition**
-  writeform  : get /board/write
-  write : post /board/write
 
-  list : get /board/list/:page
+	writeform  : get /board/write
+	write : post /board/write
 
-  modifyform : get /board/modify
-  modify : post /board/modify
+	list : get /board/list/:page
 
-  delete form : get /board/delete
-  delete : post /board/delete
+	modifyform : get /board/modify
+	modify : post /board/modify
 
-  show the post : get /board/read
+	delete form : get /board/delete
+	delete : post /board/delete
+
+	show the post : get /board/read
 ____
 
 
