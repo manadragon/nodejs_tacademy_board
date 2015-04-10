@@ -1,20 +1,20 @@
 Tacademy Node.js 게시판 구현
 ================
-**Libraries**
+***Libraries***
 
 	ejs
 	
-**Data Stores**
+***Data Stores***
 
 	mysql
 
-**Languages & Frameworks**
+***Languages & Frameworks***
 
 	Angular : view
 	node - express
 	javascript
 
-**Protocol Definition**
+***Protocol Definition***
 
 	writeform  : get /board/write
 	write : post /board/write
