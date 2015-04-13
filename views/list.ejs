@@ -33,11 +33,11 @@
     </table>
     <div style="width:46em;text-align:center;padding-top:2px">
       <% if(page > pageSize) { %>
-        [ <a href="/board/list/1" style="text-decoration: none;">처음으로</a> ]
-        [ <a href="/board/list/<%=startPage-1%>" style="text-decoration: none;">이전페이지</a> ]
+        [ <a href="/board/list/1" style="text-decoration: none;">◀◀</a> ]
+        [ <a href="/board/list/<%=startPage-1%>" style="text-decoration: none;">◀</a> ]
       <% } else {%>
-        [ <span style="color:gray">처음으로</span> ]
-        [ <span style="color:gray">이전페이지</span> ]
+        [ <span style="color:gray">◀◀</span> ]
+        [ <span style="color:gray">◀</span> ]
       <% } %>
       &nbsp;&nbsp;
       <% for (var i=startPage; i<=endPage; i++) { %>
@@ -46,7 +46,14 @@
         <% } else { %>
           [ <a href="/board/list/<%=i%>" style="text-decoration: none;"><%=i%></a> ]
         <% } %>
-
+      <% } %>
+      &nbsp;&nbsp;
+      <% if (endPage < totalPage) { %>
+        [ <a href="/board/list/<%=endPage+1%>" style="text-decoration: none;">▶</a> ]
+        [ <a href="/board/list/<%=totalPage%>" style="text-decoration: none;">▶▶</a> ]
+      <% } else {%>
+        [ <span style="color:gray">▶</span> ]
+        [ <span style="color:gray">▶▶</span> ]
       <% } %>
     </div>
   </body>
