@@ -75,8 +75,8 @@ router.get('/read/:page/:num', function (req, res, next) {
   var num = req.params.num;
 
   db_board.read(num, function (data) {
-    res.json({"result" : data});
-  //  res.render('read', {"title" : "글 읽기", "data" : data, "page" : page});
+    //res.json({"result" : data});
+    res.render('read', {"title" : "글 읽기", "data" : data, "page" : page});
   });
 
 
