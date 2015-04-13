@@ -24,7 +24,7 @@ Tacademy Node.js 게시판 구현
 	delete form : get /board/delete
 	delete : post /board/delete
 
-	show the post : get /board/read
+	show the post : get /board/read/:page/:postnum
 ____
 
 

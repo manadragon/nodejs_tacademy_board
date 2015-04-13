@@ -70,4 +70,17 @@ router.get('/write300', function (req, res) {
   res.send('<head><meta charset="utf-8"></head><script>alert("300개의 글이 생성되었습니다."></script>');
 });
 
+router.get('/read/:page/:num', function (req, res, next) {
+  var page = req.params.page;
+  var num = req.params.num;
+
+  db_board.read(num, function (data) {
+    res.json({"result" : data});
+  //  res.render('read', {"title" : "글 읽기", "data" : data, "page" : page});
+  });
+
+
+});
+
+
 module.exports = router;

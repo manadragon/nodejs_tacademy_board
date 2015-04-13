@@ -96,3 +96,17 @@ exports.list = function (page, callback) {
     });
   });
 }
+
+exports.read = function (num, callback) {
+  pool.getConnection(function (err, conn) {
+    if (err) console.log('err', err);
+    conn.query('update board set hit=hit+1 where num=?', [num], function (err, row) {
+      if (err) console.log('err', err);
+      conn.query('select * from board where num = ?', [num], function (err, rows) {
+        if (err) console.log('err', err);
+        conn.release();
+        callback(rows[0]);
+      });
+    });
+  });
+};
