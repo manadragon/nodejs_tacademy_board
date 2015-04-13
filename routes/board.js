@@ -54,4 +54,20 @@ router.get('/list/:page', function (req, res, next) {
 });
 
 
+router.get('/write300', function (req, res) {
+
+  for (var i = 1; i <=300; i++) {
+    var title = i + "번째 글 입니다.";
+    var content = i * Math.floor(200 * Math.random());
+    var passwd = '1234';
+    var datas = [title, content, passwd];
+
+    db_board.write(datas, function (success) {
+
+    });
+  }
+
+  res.send('<head><meta charset="utf-8"></head><script>alert("300개의 글이 생성되었습니다."></script>');
+});
+
 module.exports = router;

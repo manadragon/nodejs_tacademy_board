@@ -8,7 +8,7 @@ var mysql = require('mysql');
 
 // setting
 var pool = mysql.createPool({
-  "connectionLimit" : 300,
+  "connectionLimit" : 3,
   "host" : "127.0.0.1",
   "user" : "root",
   "password" : "ppsung",
