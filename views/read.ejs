@@ -10,6 +10,26 @@
       $('#modify').click(function () {
         location.href = "/board/update/<%=page%>/<%=data.num%>";
       });
+
+      $('#btnDel').click(function () {
+        $('#frm1').show();
+        $('#btnList').hide();
+      });
+
+      $('#cancel').click(function () {
+        $('#btnList').show();
+        $('#frm1').hide();
+      });
+
+      $('#del').click(function () {
+        if($('#passwd').val() == "") {
+          alert('비밀번호를 꼭 입력하세요!!!!');
+          $('#passwd').focus();
+          return;
+        }
+
+        document.frm1.submit();
+      });
     });
   </script>
 </head>
@@ -53,8 +73,17 @@
     </tr>
     <tr>
       <td colspan="2">
-        <input type="button" value="수정" id="modify"/>
-        <input type="button" value="삭제"/>
+        <span id="btnList">
+          <input type="button" value="수정" id="modify"/>
+          <input type="button" value="삭제" id="btnDel"/>
+        </span>
+        <form action="/board/delete" method="post" style="display:none" name="frm1" id="frm1">
+          <input type="hidden" name="num" value="<%=data.num%>"/>
+          <input type="hidden" name="page" value="<%=page%>"/>
+          비밀번호 : <input type="password" name="passwd" id="passwd" size="12" maxlength="12"/>
+          <input type="button" value="DELETE" id="del"/>
+          <input type="button" value="CANCEL" id="cancel"/>
+        </form>
       </td>
     </tr>
   </table>
