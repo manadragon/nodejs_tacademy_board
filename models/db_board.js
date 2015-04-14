@@ -112,3 +112,16 @@ exports.read = function (num, callback) {
     });
   });
 };
+
+exports.update = function (num, callback) {
+  pool.getConnection(function (err, conn) {
+    if (err) console.log('err',err);
+    conn.query("select num, title, content, passwd, DATE_FORMAT(regdate, '%Y-%m-%d %H:%i:%s') regdate, hit, reply, recmd, id " +
+    "from board " +
+    "where num = ? order by num desc ",[num], function (err, rows) {
+      if (err) console.log('err', err);
+      conn.release();
+      callback(rows[0]);
+    });
+  });
+};

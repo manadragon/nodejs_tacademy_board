@@ -78,8 +78,15 @@ router.get('/read/:page/:num', function (req, res, next) {
     //res.json({"result" : data});
     res.render('read', {"title" : "글 읽기", "data" : data, "page" : page});
   });
+});
 
+router.get('/update/:page/:num', function (req, res, next) {
+  var page = req.params.page;
+  var num = req.params.num;
 
+  db_board.update(num, function (data) {
+    res.render('updateform', {"title" : "수정하기", "data" : data, "page" : page});
+  });
 });
 
 

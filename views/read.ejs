@@ -3,13 +3,21 @@
 <head>
   <meta charset="UTF-8">
   <title><%= title %></title>
-  <link rel='stylesheet' href='/stylesheets/style.css' />
+  <link rel='stylesheet' href='/stylesheets/style.css'/>
+  <script src="/javascripts/jquery-1.11.2.min.js"></script>
+  <script>
+    $(function () {
+      $('#modify').click(function () {
+        location.href = "/board/update/<%=page%>/<%=data.num%>";
+      });
+    });
+  </script>
 </head>
 <body>
+
 <h1><%= title %></h1>
 <a href="/board/list">리스트</a><br/>
 <!-- num, title, content, passwd, regdate, hit, reply, recmd, id -->
-<body>
   <table border="1" width="400">
     <tr>
       <th>제목</th>
@@ -45,10 +53,10 @@
     </tr>
     <tr>
       <td colspan="2">
-        <input type="button" value="수정"/>
+        <input type="button" value="수정" id="modify"/>
         <input type="button" value="삭제"/>
       </td>
     </tr>
   </table>
-  </body>
+</body>
 </html>
