@@ -113,7 +113,7 @@ exports.read = function (num, callback) {
   });
 };
 
-exports.update = function (num, callback) {
+exports.updateform = function (num, callback) {
   pool.getConnection(function (err, conn) {
     if (err) console.log('err',err);
     conn.query("select num, title, content, passwd, DATE_FORMAT(regdate, '%Y-%m-%d %H:%i:%s') regdate, hit, reply, recmd, id " +
@@ -125,3 +125,20 @@ exports.update = function (num, callback) {
     });
   });
 };
+
+exports.update = function (datas, callback){
+  pool.getConnection(function (err, conn) {
+    if (err) console.error('err', err);
+    var sql = "update board set title=?, content=? where num=? and passwd=?";
+    conn.query(sql, datas, function (err, row) {
+      if (err) console.error('err', err);
+
+      var success = false;
+      if(row.affectedRows == 1) {
+        success = true;
+      }
+      conn.release();
+      callback(success);
+    });
+  });
+}

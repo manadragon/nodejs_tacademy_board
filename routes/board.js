@@ -84,10 +84,21 @@ router.get('/update/:page/:num', function (req, res, next) {
   var page = req.params.page;
   var num = req.params.num;
 
-  db_board.update(num, function (data) {
+  db_board.updateform(num, function (data) {
     res.render('updateform', {"title" : "수정하기", "data" : data, "page" : page});
   });
 });
 
+router.post('/update', function (req, res, next) {
+  //console.log("req.body", req.body);
+  var page = req.body.page;
+  var datas = [req.body.title, req.body.content, req.body.num, req.body.passwd];
+
+  db_board.update(datas, function (data) {
+    //res.json({result : data});
+    res.redirect('/board/list/' + page);
+    //res.render('updateform', {"title" : "수정하기", "data" : data, "page" : page});
+  })
+});
 
 module.exports = router;
