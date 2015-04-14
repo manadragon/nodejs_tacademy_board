@@ -4,14 +4,22 @@
     <meta charset="UTF-8">
     <title><%= title %></title>
     <link rel='stylesheet' href='/stylesheets/style.css' />
+    <!-- 합쳐지고 최소화된 최신 CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
+    <!-- 부가적인 테마 -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap-theme.min.css">
+    <!-- 합쳐지고 최소화된 최신 자바스크립트 -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
   </head>
   <body>
+  <div class="container">
+    <div class="row">
     <h1><%= title %></h1>
     <a href="/board/list">리스트</a><br/>
 
-    <form action="/board/update" method="post">
+    <form action="/board/update" method="post" class="form-group">
       <!--title, content-->
-      <table width="400" border="1">
+      <table width="400" class="table table-hover">
         <tr>
           <th>제목</th>
           <td>
@@ -30,11 +38,13 @@
         </tr>
         <tr>
           <td colspan="2">
-            <input type="submit" value="수정"/>
-            <input type="reset" value="취소"/>
+            <input type="submit" value="수정" class="btn btn-primary"/>
+            <input type="reset" value="취소" class="btn btn-default"/>
           </td>
         </tr>
       </table>
     </form>
+      </div>
+    </div>
   </body>
 </html>

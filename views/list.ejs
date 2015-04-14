@@ -4,12 +4,20 @@
     <meta charset="UTF-8">
     <title><%= title %></title>
     <link rel='stylesheet' href='/stylesheets/style.css' />
+    <!-- 합쳐지고 최소화된 최신 CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
+    <!-- 부가적인 테마 -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap-theme.min.css">
+    <!-- 합쳐지고 최소화된 최신 자바스크립트 -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
   </head>
   <body>
+  <div class="container">
+    <div class="row">
     <h1><%= title %></h1>
     <a href="/board/write">쓰기</a>
     <!-- 번호, 제목, 작성자, 날짜, 조회수-->
-    <table width="600" border="1">
+    <table width="600" class="table table-condensed">
       <tr>
         <th width="40">번호</th>
         <th width="260">제목</th>
@@ -56,5 +64,7 @@
         [ <span style="color:gray">▶▶</span> ]
       <% } %>
     </div>
+    </div>
+  </div>
   </body>
 </html>
