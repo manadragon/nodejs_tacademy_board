@@ -141,4 +141,20 @@ exports.update = function (datas, callback){
       callback(success);
     });
   });
-}
+};
+
+exports.delete = function (datas, callback) {
+  pool.getConnection(function (err, conn) {
+    if (err) console.log('err', err);
+    var sql = 'delete from board where num=? and passwd=?';
+    conn.query(sql, datas, function (err, row) {
+      if (err) console.error('err', err);
+      var success = false;
+      if(row.affectedRows == 1) {
+        success = true;
+      }
+      conn.release();
+      callback(success);
+    });
+  });
+};

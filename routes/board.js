@@ -101,4 +101,22 @@ router.post('/update', function (req, res, next) {
   })
 });
 
+router.post('/delete', function (req, res, next) {
+  console.log('req.body', req.body);
+  var num = req.body.num;
+  var page = req.body.page;
+  var passwd = req.body.passwd;
+
+  var datas = [num, passwd];
+
+  db_board.delete(datas, function (data) {
+    //res.json({result : data});
+    if (data){
+      res.redirect('/board/list/'+page);
+    } else {
+      res.end('<head><meta charset="utf-8"><script>alert("비밀번호가 틀려서 되돌아갑니다.");history.back();</script></head>');
+    }
+  });
+});
+
 module.exports = router;
