@@ -12,7 +12,7 @@ router.get('/', function(req, res, next) {
 });
 
 router.get('/write', function (req, res, next) {
-  res.render('writeform', { "title" : "글쓰기" });
+  res.render('board/writeform', { "title" : "글쓰기" });
 });
 
 router.post('/write', function (req, res, next) {
@@ -49,7 +49,7 @@ router.get('/list/:page', function (req, res, next) {
 
   console.log(page);
   db_board.list(page, function (datas) {
-    res.render('list', datas);
+    res.render('board/list', datas);
   });
 });
 
@@ -76,7 +76,7 @@ router.get('/read/:page/:num', function (req, res, next) {
 
   db_board.read(num, function (data) {
     //res.json({"result" : data});
-    res.render('read', {"title" : "글 읽기", "data" : data, "page" : page});
+    res.render('board/read', {"title" : "글 읽기", "data" : data, "page" : page});
   });
 });
 
@@ -85,7 +85,7 @@ router.get('/update/:page/:num', function (req, res, next) {
   var num = req.params.num;
 
   db_board.updateform(num, function (data) {
-    res.render('updateform', {"title" : "수정하기", "data" : data, "page" : page});
+    res.render('board/updateform', {"title" : "수정하기", "data" : data, "page" : page});
   });
 });
 

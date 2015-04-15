@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title><%= title %></title>
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+  </head>
+  <body>
+    <h1><%= title %></h1>
+    <form action="/members/withdraw/<%=id%>" method="post">
+      <input type="hidden" name="id" value="<%=id%>"/>
+      비밀번호 : <input type="password" name="passwd" size="12" maxlength="12"/>
+      <input type="submit" value="탈퇴"/>
+      <input type="reset" value="취소"/>
+    </form>
+  </body>
+</html>
