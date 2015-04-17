@@ -3,17 +3,9 @@
  */
 
 // db_board.js
-
 var mysql = require('mysql');
-
-// setting
-var pool = mysql.createPool({
-  "connectionLimit" : 3,
-  "host" : "127.0.0.1",
-  "user" : "root",
-  "password" : "ppsung",
-  "database" : "imsi1"
-});
+var config = require('../models/db_config');
+var pool = mysql.createPool(config);
 
 exports.write = function (datas, callback) {
   pool.getConnection(function (err, conn) {
