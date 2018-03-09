@@ -73,7 +73,6 @@ console.log('서버가 ' + app.get('port') + '번 포트에서 실행중입니�
 
 module.exports = app;
 
-
 /*
  CREATE TABLE `member` (
  `id` varchar(12) NOT NULL,
@@ -106,9 +105,7 @@ module.exports = app;
  KEY `fk_board_member_idx` (`id`),
  CONSTRAINT `fk_board_member` FOREIGN KEY (`id`) REFERENCES `member` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
  ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
-
-
+ 
  CREATE TABLE `reply` (
  `rep_num` int(11) NOT NULL AUTO_INCREMENT,
  `rep_content` varchar(1000) NOT NULL,
@@ -121,6 +118,57 @@ module.exports = app;
  CONSTRAINT `fk_reply_board1` FOREIGN KEY (`num`) REFERENCES `board` (`num`) ON DELETE NO ACTION ON UPDATE NO ACTION,
  CONSTRAINT `fk_reply_member1` FOREIGN KEY (`id`) REFERENCES `member` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
  ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+*/
+
+ /* 2018.3.9. 15:08 
+ mariaDB용으로 DB생성변경
+ DB설정은 module/db_config.json에서 수정
+
+  CREATE TABLE `member` (
+ `id` varchar(12) NOT NULL,
+ `passwd` varchar(12) NOT NULL,
+ `name` varchar(10) NOT NULL,
+ `email` varchar(50) NOT NULL,
+ `tel` varchar(13) NOT NULL,
+ `address` varchar(50) DEFAULT NULL,
+ `job` varchar(20) DEFAULT NULL,
+ `gender` char(1) NOT NULL,
+ `birth` varchar(8) DEFAULT NULL,
+ `regdate` datetime DEFAULT NULL,
+ `modidate` datetime DEFAULT NULL,
+ `withdraw` char(1) NOT NULL DEFAULT 'N',
+ PRIMARY KEY (`id`)
+ );
+
+
+ CREATE TABLE `board` (
+ `num` int(11) NOT NULL AUTO_INCREMENT,
+ `title` varchar(50) NOT NULL,
+ `content` varchar(5000) NOT NULL,
+ `passwd` varchar(12) NOT NULL,
+ `regdate` datetime NOT NULL,
+ `hit` int(11) NOT NULL DEFAULT '0',
+ `reply` int(11) NOT NULL DEFAULT '0',
+ `recmd` int(11) NOT NULL DEFAULT '0',
+ `id` varchar(12) NOT NULL,
+ PRIMARY KEY (`num`),
+ KEY `fk_board_member_idx` (`id`),
+ CONSTRAINT `fk_board_member` FOREIGN KEY (`id`) REFERENCES `member` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
+ ); 
+ 
+ CREATE TABLE `reply` (
+ `rep_num` int(11) NOT NULL AUTO_INCREMENT,
+ `rep_content` varchar(1000) NOT NULL,
+ `rep_date` datetime DEFAULT NULL,
+ `num` int(11) NOT NULL,
+ `id` varchar(12) NOT NULL,
+ PRIMARY KEY (`rep_num`),
+ KEY `fk_reply_board1_idx` (`num`),
+ KEY `fk_reply_member1_idx` (`id`),
+ CONSTRAINT `fk_reply_board1` FOREIGN KEY (`num`) REFERENCES `board` (`num`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+ CONSTRAINT `fk_reply_member1` FOREIGN KEY (`id`) REFERENCES `member` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
+ ); 
 
 
  */
