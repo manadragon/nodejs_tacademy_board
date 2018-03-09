@@ -3,7 +3,7 @@ Tacademy Node.js 게시판 구현
 
 ***Data Stores***
 
-	mysql
+	mariaDB
 
 ***Languages & Frameworks***
 
@@ -26,5 +26,3 @@ Tacademy Node.js 게시판 구현
 
 	show the post : get /board/read/:page/:postnum
 ____
-
-
